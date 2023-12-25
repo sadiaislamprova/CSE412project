@@ -1,0 +1,57 @@
+# Duplicate code - The same logic is repeated in the find_lis_length_duplicate function
+def find_lis_length(arr):
+    if not arr:
+        return 0
+
+    n = len(arr)
+    lis = [1] * n
+
+    for i in range(1, n):
+        for j in range(0, i):
+            if arr[i] > arr[j] and lis[i] < lis[j] + 1:
+                lis[i] = lis[j] + 1
+
+    return max(lis)
+
+def find_lis_length_duplicate(arr):
+    if not arr:
+        return 0
+
+    n = len(arr)
+    lis = [1] * n
+
+    for i in range(1, n):
+        for j in range(0, i):
+            if arr[i] > arr[j] and lis[i] < lis[j] + 1:
+                lis[i] = lis[j] + 1
+
+    return max(lis)
+
+# Dead code - This code is not executed
+if False:
+    print("This code is dead.")
+
+# Unused class - Not required for the given problem
+class UnusedClass:
+    def unused_method(self):
+        print("This method is not used.")
+
+# Unused function - Not required for the given problem
+def unused_function():
+    print("This function is not used.")
+
+def main():
+    # Example array
+    array = [10, 22, 9, 33, 21, 50, 41, 60, 80]
+
+    result = find_lis_length(array)
+    print(f"The length of the longest increasing subsequence is: {result}")
+
+    # Example array with duplicate code
+    array_duplicate = [5, 2, 8, 6, 3, 6, 9, 7]
+
+    result_duplicate = find_lis_length_duplicate(array_duplicate)
+    print(f"The length of the longest increasing subsequence (duplicate) is: {result_duplicate}")
+
+if __name__ == "__main__":
+    main()

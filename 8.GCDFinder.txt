@@ -1,0 +1,17 @@
+class GCDFinder:
+    def __init__(self, num1, num2):
+        self.num1 = num1
+        self.num2 = num2
+
+    def find_gcd(self):
+        while self.num2:
+            self.num1, self.num2 = self.num2, self.num1 % self.num2
+        return abs(self.num1)
+
+# Example usage:
+number1 = 48
+number2 = 18
+gcd_finder = GCDFinder(number1, number2)
+result_gcd = gcd_finder.find_gcd()
+
+print(f"The GCD of {number1} and {number2} is: {result_gcd}")

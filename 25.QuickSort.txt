@@ -1,0 +1,32 @@
+class QuickSort:
+    def __init__(self, unsorted_list):
+        self.unsorted_list = unsorted_list
+
+    def quick_sort(self, low, high):
+        if low < high:
+            # Partition the list and get the pivot index
+            pivot_index = self.partition(low, high)
+
+            # Recursively sort the sublists on either side of the pivot
+            self.quick_sort(low, pivot_index - 1)
+            self.quick_sort(pivot_index + 1, high)
+
+    def partition(self, low, high):
+        pivot = self.unsorted_list[high]
+        i = low - 1
+
+        for j in range(low, high):
+            if self.unsorted_list[j] <= pivot:
+                i += 1
+                self.unsorted_list[i], self.unsorted_list[j] = self.unsorted_list[j], self.unsorted_list[i]
+
+        self.unsorted_list[i + 1], self.unsorted_list[high] = self.unsorted_list[high], self.unsorted_list[i + 1]
+        return i + 1
+
+# Example usage:
+list_to_sort = [64, 25, 12, 22, 11]
+quick_sorter = QuickSort(list_to_sort)
+
+print("Original List:", list_to_sort)
+quick_sorter.quick_sort(0, len(list_to_sort) - 1)
+print("List after Quick Sort:", list_to_sort)

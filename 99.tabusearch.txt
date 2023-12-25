@@ -1,0 +1,70 @@
+import numpy as np
+
+# Duplicate code - The same logic is repeated in the TabuSearch class and optimize_duplicate function
+class TabuSearch:
+    def __init__(self, objective_function, initial_solution, neighborhood_size=5, tabu_list_size=10, max_iterations=100):
+        self.objective_function = objective_function
+        self.current_solution = initial_solution
+        self.best_solution = initial_solution
+        self.neighborhood_size = neighborhood_size
+        self.tabu_list_size = tabu_list_size
+        self.tabu_list = []
+        self.max_iterations = max_iterations
+
+    def optimize(self):
+        for iteration in range(self.max_iterations):
+            neighborhood = self.generate_neighborhood(self.current_solution, self.neighborhood_size)
+            neighborhood = self.filter_tabu_moves(neighborhood)
+
+            if not neighborhood:
+                break
+
+            candidate_solution = min(neighborhood, key=self.objective_function)
+
+            if self.objective_function(candidate_solution) < self.objective_function(self.best_solution):
+                self.best_solution = candidate_solution
+
+            self.tabu_list.append(candidate_solution)
+            if len(self.tabu_list) > self.tabu_list_size:
+                self.tabu_list.pop(0)
+
+            self.current_solution = candidate_solution
+
+            # Dead code - This code is not executed
+            if False:
+                print("This code is dead.")
+
+            # Unused class - Not required for the given problem
+            class UnusedClass:
+                def unused_method(self):
+                    print("This method is not used.")
+
+            # Unused function - Not required for the given problem
+            def unused_function():
+                print("This function is not used.")
+
+        return self.best_solution
+
+    # Duplicate code - The same logic is repeated in the generate_neighborhood_duplicate function
+    def generate_neighborhood(self, solution, size):
+        neighborhood = [solution + np.random.uniform(-1, 1, len(solution)) for _ in range(size)]
+        return neighborhood
+
+    # Duplicate code - The same logic is repeated in the generate_neighborhood_duplicate function
+    def generate_neighborhood_duplicate(self, solution, size):
+        neighborhood = [solution + np.random.uniform(-1, 1, len(solution)) for _ in range(size)]
+        return neighborhood
+
+    def filter_tabu_moves(self, neighborhood):
+        return [move for move in neighborhood if move not in self.tabu_list]
+
+# Example usage
+def objective_function(x):
+    return np.sum(x ** 2)
+
+initial_solution = np.random.uniform(-5, 5, size=3)
+tabu_search = TabuSearch(objective_function, initial_solution)
+result = tabu_search.optimize()
+
+print("Optimal Solution:", result)
+print("Optimal Value:", objective_function(result))

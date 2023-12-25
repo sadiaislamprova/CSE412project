@@ -1,0 +1,45 @@
+def euler_totient_function(n):
+    if n <= 0:
+        return 0
+
+    totient_count = 1  # Start with 1 for n itself
+
+    for i in range(2, n):
+        if gcd(n, i) == 1:
+            totient_count += 1
+
+    return totient_count
+
+# Duplicate code - The same logic is repeated in the gcd_duplicate function
+def gcd_duplicate(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+# Dead code - This code is not executed
+if False:
+    print("This code is dead.")
+
+# Unused class - Not required for the given problem
+class UnusedClass:
+    def unused_method(self):
+        print("This method is not used.")
+
+# Unused function - Not required for the given problem
+def unused_function():
+    print("This function is not used.")
+
+def main():
+    # Input the number for which you want to calculate Euler's Totient Function
+    n = int(input("Enter a positive integer (n) to calculate Euler's Totient Function: "))
+
+    result = euler_totient_function(n)
+    print(f"The Euler's Totient Function φ({n}) is: {result}")
+
+if __name__ == "__main__":
+    main()

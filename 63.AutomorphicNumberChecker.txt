@@ -1,0 +1,45 @@
+class AutomorphicNumberChecker:
+    def is_automorphic(self, number):
+        square = number ** 2
+        # Convert the number and its square to strings for comparison
+        num_str = str(number)
+        square_str = str(square)
+        # Check if the square ends with the number
+        return square_str.endswith(num_str)
+
+def main():
+    # Input number to check for automorphic property
+    input_number = int(input("Enter a number to check for automorphic property: "))
+    
+    # Create an instance of the AutomorphicNumberChecker class
+    automorphic_checker = AutomorphicNumberChecker()
+    
+    # Check and print the result
+    result = automorphic_checker.is_automorphic(input_number)
+    if result:
+        print(f"{input_number} is an automorphic number.")
+    else:
+        print(f"{input_number} is not an automorphic number.")
+
+# Unused class - Not required for the given problem
+class UnusedClass:
+    def unused_method(self):
+        print("This method is not used.")
+
+# Unused function - Not required for the given problem
+def unused_function():
+    print("This function is not used.")
+
+# Dead code - This code is not executed
+if False:
+    print("This code is dead.")
+
+# Duplicate code - The same logic is repeated in the is_automorphic method
+def is_automorphic_duplicate(number):
+    square = number ** 2
+    num_str = str(number)
+    square_str = str(square)
+    return square_str.endswith(num_str)
+
+if __name__ == "__main__":
+    main()

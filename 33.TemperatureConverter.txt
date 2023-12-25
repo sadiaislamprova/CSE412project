@@ -1,0 +1,14 @@
+class TemperatureConverter:
+    def celsius_to_fahrenheit(self, celsius):
+        fahrenheit = (celsius * 9/5) + 32
+        return fahrenheit
+
+# Example usage:
+temperature_converter = TemperatureConverter()
+
+# Test case
+celsius_temperature = 25
+fahrenheit_result = temperature_converter.celsius_to_fahrenheit(celsius_temperature)
+
+# Display result
+print(f"{celsius_temperature} degrees Celsius is equal to {fahrenheit_result:.2f} degrees Fahrenheit")

@@ -1,0 +1,27 @@
+class MagicNumberChecker:
+    def is_magic_number(self, number):
+        if number <= 0:
+            return False
+
+        while number >= 10:
+            sum_of_digits = sum(int(digit) for digit in str(number))
+            number = sum_of_digits
+
+        return number == 1
+
+# Example usage:
+magic_checker = MagicNumberChecker()
+
+# Test cases
+number1 = 19   # Magic number: 1 + 9 = 10, 1 + 0 = 1
+number2 = 23   # Not a magic number
+number3 = 7    # Magic number: 7
+
+# Display results
+result1 = magic_checker.is_magic_number(number1)
+result2 = magic_checker.is_magic_number(number2)
+result3 = magic_checker.is_magic_number(number3)
+
+print(f"Is {number1} a magic number? {result1}")
+print(f"Is {number2} a magic number? {result2}")
+print(f"Is {number3} a magic number? {result3}")

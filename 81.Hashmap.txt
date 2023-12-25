@@ -1,0 +1,62 @@
+# Duplicate code - The same logic is repeated in the get_duplicate function
+class HashMap:
+    def __init__(self, capacity=10):
+        self.capacity = capacity
+        self.buckets = [[] for _ in range(capacity)]
+
+    def _hash(self, key):
+        return hash(key) % self.capacity
+
+    def put(self, key, value):
+        hash_key = self._hash(key)
+        for entry in self.buckets[hash_key]:
+            if entry[0] == key:
+                entry[1] = value
+                return
+        self.buckets[hash_key].append((key, value))
+
+    def get(self, key):
+        hash_key = self._hash(key)
+        for entry in self.buckets[hash_key]:
+            if entry[0] == key:
+                return entry[1]
+        return None
+
+    # Duplicate code - The same logic is repeated in the get_duplicate function
+    def get_duplicate(self, key):
+        hash_key = self._hash(key)
+        for entry in self.buckets[hash_key]:
+            if entry[0] == key:
+                return entry[1]
+        return None
+
+    # Dead code - This code is not executed
+    if False:
+        print("This code is dead.")
+
+    # Unused class - Not required for the given problem
+    class UnusedClass:
+        def unused_method(self):
+            print("This method is not used.")
+
+    # Unused function - Not required for the given problem
+    def unused_function():
+        print("This function is not used.")
+
+def main():
+    hash_map = HashMap()
+
+    # Inserting key-value pairs
+    hash_map.put('apple', 5)
+    hash_map.put('banana', 8)
+    hash_map.put('orange', 12)
+
+    # Retrieving values
+    print("Value for 'apple':", hash_map.get('apple'))
+    print("Value for 'banana':", hash_map.get('banana'))
+
+    # Retrieving values using duplicate function
+    print("Value for 'orange' (duplicate):", hash_map.get_duplicate('orange'))
+
+if __name__ == "__main__":
+    main()

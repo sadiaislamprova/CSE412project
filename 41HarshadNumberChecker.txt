@@ -1,0 +1,25 @@
+class HarshadNumberChecker:
+    def is_harshad_number(self, number):
+        if number <= 0:
+            return False
+
+        sum_of_digits = sum(int(digit) for digit in str(number))
+        return number % sum_of_digits == 0
+
+# Example usage:
+harshad_checker = HarshadNumberChecker()
+
+# Test cases
+number1 = 18   # Harshad number: 1 + 8 = 9, and 18 is divisible by 9
+number2 = 25   # Not a Harshad number: 2 + 5 = 7, and 25 is not divisible by 7
+number3 = 42   # Not a Harshad number: 4 + 2 = 6, and 42 is not divisible by 6
+
+# Display results
+result1 = harshad_checker.is_harshad_number(number1)
+result2 = harshad_checker.is_harshad_number(number2)
+result3 = harshad_checker.is_harshad_number(number3)
+
+print(f"Is {number1} a Harshad number? {result1}")
+print(f"Is {number2} a Harshad number? {result2}")
+print(f"Is {number3} a Harshad number? {result3}")
+.

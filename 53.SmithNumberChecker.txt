@@ -1,0 +1,53 @@
+class SmithNumberChecker:
+    def is_smith_number(self, number):
+        if number <= 1:
+            return False
+
+        # Duplicate code
+        digit_sum = self.sum_of_digits(number)
+        prime_factors_sum = self.sum_of_prime_factors(number)
+
+        return digit_sum == prime_factors_sum
+
+    # Unused method
+    def unused_method(self):
+        print("This method is not used.")
+
+    # Duplicate method
+    def sum_of_digits(self, num):
+        return sum(int(digit) for digit in str(num))
+
+    # Dead method
+    def dead_method(self):
+        print("This method is dead.")
+
+    # Unused method
+    def unused_method_2(self):
+        print("This method is not used.")
+
+    # Duplicate method
+    def sum_of_prime_factors(self, num):
+        prime_factors_sum = 0
+        i = 2
+
+        while i * i <= num:
+            if num % i:
+                i += 1
+            else:
+                num //= i
+                prime_factors_sum += self.sum_of_digits(i)
+
+        if num > 1:
+            prime_factors_sum += self.sum_of_digits(num)
+
+        return prime_factors_sum
+
+# Example usage:
+smith_checker = SmithNumberChecker()
+
+# Test case
+smith_number = 4
+
+# Display result
+is_smith_result = smith_checker.is_smith_number(smith_number)
+print(f"Is {smith_number} a Smith number? {is_smith_result}")

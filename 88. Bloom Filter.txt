@@ -1,0 +1,68 @@
+# Duplicate code - The same logic is repeated in the add_duplicate and check_duplicate functions
+class BloomFilter:
+    def __init__(self, size, hash_functions):
+        self.size = size
+        self.hash_functions = hash_functions
+        self.bit_array = [False] * size
+
+    def add(self, element):
+        for hash_function in self.hash_functions:
+            index = hash_function(element) % self.size
+            self.bit_array[index] = True
+
+    # Duplicate code - The same logic is repeated in the add_duplicate function
+    def add_duplicate(self, element):
+        for hash_function in self.hash_functions:
+            index = hash_function(element) % self.size
+            self.bit_array[index] = True
+
+    # Dead code - This code is not executed
+    if False:
+        print("This code is dead.")
+
+    # Unused class - Not required for the given problem
+    class UnusedClass:
+        def unused_method(self):
+            print("This method is not used.")
+
+    # Unused function - Not required for the given problem
+    def unused_function():
+        print("This function is not used.")
+
+    def check(self, element):
+        for hash_function in self.hash_functions:
+            index = hash_function(element) % self.size
+            if not self.bit_array[index]:
+                return False
+        return True
+
+    # Duplicate code - The same logic is repeated in the check_duplicate function
+    def check_duplicate(self, element):
+        for hash_function in self.hash_functions:
+            index = hash_function(element) % self.size
+            if not self.bit_array[index]:
+                return False
+        return True
+
+def hash_function1(element):
+    return hash(element)
+
+def hash_function2(element):
+    return hash(element + "salt")
+
+def main():
+    bloom_filter = BloomFilter(size=10, hash_functions=[hash_function1, hash_function2])
+
+    # Adding elements to the Bloom filter
+    bloom_filter.add("apple")
+    bloom_filter.add("banana")
+    bloom_filter.add("orange")
+
+    # Checking elements using duplicate function
+    print(bloom_filter.check_duplicate("apple"))  # True
+    print(bloom_filter.check_duplicate("grape"))  # False
+
+    # Your code here: Implement other Bloom filter operations as needed for testing
+
+if __name__ == "__main__":
+    main()
