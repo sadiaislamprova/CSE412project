@@ -1,0 +1,26 @@
+class InsertionSort:
+    def __init__(self, unsorted_list):
+        self.unsorted_list = unsorted_list
+
+    def insertion_sort(self):
+        n = len(self.unsorted_list)
+
+        for i in range(1, n):
+            key = self.unsorted_list[i]
+            j = i - 1
+
+            # Move elements greater than key to one position ahead of their current position
+            while j >= 0 and key < self.unsorted_list[j]:
+                self.unsorted_list[j + 1] = self.unsorted_list[j]
+                j -= 1
+
+            # Place the key at its correct position
+            self.unsorted_list[j + 1] = key
+
+# Example usage:
+list_to_sort = [64, 25, 12, 22, 11]
+insertion_sorter = InsertionSort(list_to_sort)
+
+print("Original List:", list_to_sort)
+insertion_sorter.insertion_sort()
+print("List after Insertion Sort:", list_to_sort)

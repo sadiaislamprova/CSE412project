@@ -1,0 +1,24 @@
+class PerfectNumberChecker:
+    def is_perfect_number(self, number):
+        if number <= 0:
+            return False
+
+        divisor_sum = sum(divisor for divisor in range(1, number) if number % divisor == 0)
+        return divisor_sum == number
+
+# Example usage:
+perfect_number_checker = PerfectNumberChecker()
+
+# Test cases
+number1 = 6
+number2 = 28
+number3 = 12
+
+result1 = perfect_number_checker.is_perfect_number(number1)
+result2 = perfect_number_checker.is_perfect_number(number2)
+result3 = perfect_number_checker.is_perfect_number(number3)
+
+# Display results
+print(f"Is {number1} a perfect number? {result1}")
+print(f"Is {number2} a perfect number? {result2}")
+print(f"Is {number3} a perfect number? {result3}")

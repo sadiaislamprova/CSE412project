@@ -1,0 +1,24 @@
+class AnagramChecker:
+    def are_anagrams(self, str1, str2):
+        # Remove spaces and convert to lowercase for case-insensitive comparison
+        str1 = str1.replace(" ", "").lower()
+        str2 = str2.replace(" ", "").lower()
+
+        # Check if the sorted characters in both strings are the same
+        return sorted(str1) == sorted(str2)
+
+# Example usage:
+anagram_checker = AnagramChecker()
+
+# Test cases
+string1 = "Listen"
+string2 = "Silent"
+result1 = anagram_checker.are_anagrams(string1, string2)
+
+string3 = "Hello"
+string4 = "World"
+result2 = anagram_checker.are_anagrams(string3, string4)
+
+# Display results
+print(f"Are '{string1}' and '{string2}' anagrams? {result1}")
+print(f"Are '{string3}' and '{string4}' anagrams? {result2}")
