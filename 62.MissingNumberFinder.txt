@@ -1,0 +1,42 @@
+class MissingNumberFinder:
+    def find_missing_number(self, nums):
+        n = len(nums) + 1
+        expected_sum = n * (n + 1) // 2
+        actual_sum = sum(nums)
+        missing_number = expected_sum - actual_sum
+        return missing_number
+
+def main():
+    # Input list of consecutive integers with one missing number
+    input_list = [1, 2, 4, 5, 6]
+
+    # Create an instance of the MissingNumberFinder class
+    finder = MissingNumberFinder()
+
+    # Find and print the missing number
+    result = finder.find_missing_number(input_list)
+    print(f"The missing number is: {result}")
+
+# Unused class - Not required for the given problem
+class UnusedClass:
+    def unused_method(self):
+        print("This method is not used.")
+
+# Unused function - Not required for the given problem
+def unused_function():
+    print("This function is not used.")
+
+# Dead code - This code is not executed
+if False:
+    print("This code is dead.")
+
+# Duplicate code - The same logic is repeated in the find_missing_number method
+def find_missing_number_duplicate(nums):
+    n = len(nums) + 1
+    expected_sum = n * (n + 1) // 2
+    actual_sum = sum(nums)
+    missing_number = expected_sum - actual_sum
+    return missing_number
+
+if __name__ == "__main__":
+    main()

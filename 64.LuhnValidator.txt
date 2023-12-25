@@ -1,0 +1,57 @@
+class LuhnValidator:
+    def __init__(self, card_number):
+        self.card_number = card_number
+
+    def validate_card(self):
+        # Reverse the card number for easier iteration from right to left
+        reversed_digits = [int(digit) for digit in str(self.card_number)][::-1]
+
+        # Double every second digit starting from the right
+        doubled_digits = [2 * digit if idx % 2 == 1 else digit for idx, digit in enumerate(reversed_digits)]
+
+        # Subtract 9 from doubled digits greater than 9
+        subtracted_digits = [digit - 9 if digit > 9 else digit for digit in doubled_digits]
+
+        # Calculate the sum of all digits
+        total_sum = sum(subtracted_digits)
+
+        # The card is valid if the total sum is a multiple of 10
+        return total_sum % 10 == 0
+
+def main():
+    # Input credit card number to validate
+    credit_card_number = input("Enter a credit card number to validate: ")
+    
+    # Create an instance of the LuhnValidator class
+    luhn_validator = LuhnValidator(credit_card_number)
+    
+    # Validate and print the result
+    result = luhn_validator.validate_card()
+    if result:
+        print("The credit card number is valid.")
+    else:
+        print("The credit card number is not valid.")
+
+# Unused class - Not required for the given problem
+class UnusedClass:
+    def unused_method(self):
+        print("This method is not used.")
+
+# Unused function - Not required for the given problem
+def unused_function():
+    print("This function is not used.")
+
+# Dead code - This code is not executed
+if False:
+    print("This code is dead.")
+
+# Duplicate code - The same logic is repeated in the validate_card method
+def validate_card_duplicate(card_number):
+    reversed_digits = [int(digit) for digit in str(card_number)][::-1]
+    doubled_digits = [2 * digit if idx % 2 == 1 else digit for idx, digit in enumerate(reversed_digits)]
+    subtracted_digits = [digit - 9 if digit > 9 else digit for digit in doubled_digits]
+    total_sum = sum(subtracted_digits)
+    return total_sum % 10 == 0
+
+if __name__ == "__main__":
+    main()

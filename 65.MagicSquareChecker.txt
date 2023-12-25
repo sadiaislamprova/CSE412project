@@ -1,0 +1,73 @@
+class MagicSquareChecker:
+    def __init__(self, matrix):
+        self.matrix = matrix
+
+    def is_magic_square(self):
+        # Check if all rows, columns, and diagonals have the same sum
+        target_sum = sum(self.matrix[0])
+
+        # Check rows
+        if any(sum(row) != target_sum for row in self.matrix):
+            return False
+
+        # Check columns
+        if any(sum(col) != target_sum for col in zip(*self.matrix)):
+            return False
+
+        # Check main diagonal
+        if sum(self.matrix[i][i] for i in range(len(self.matrix))) != target_sum:
+            return False
+
+        # Check secondary diagonal
+        if sum(self.matrix[i][len(self.matrix) - 1 - i] for i in range(len(self.matrix))) != target_sum:
+            return False
+
+        # If all checks pass, it's a magic square
+        return True
+
+def main():
+    # Input matrix to check for magic square property
+    input_matrix = [
+        [2, 7, 6],
+        [9, 5, 1],
+        [4, 3, 8]
+    ]
+
+    # Create an instance of the MagicSquareChecker class
+    magic_square_checker = MagicSquareChecker(input_matrix)
+
+    # Check and print the result
+    result = magic_square_checker.is_magic_square()
+    if result:
+        print("The matrix forms a magic square.")
+    else:
+        print("The matrix does not form a magic square.")
+
+# Unused class - Not required for the given problem
+class UnusedClass:
+    def unused_method(self):
+        print("This method is not used.")
+
+# Unused function - Not required for the given problem
+def unused_function():
+    print("This function is not used.")
+
+# Dead code - This code is not executed
+if False:
+    print("This code is dead.")
+
+# Duplicate code - The same logic is repeated in the is_magic_square method
+def is_magic_square_duplicate(matrix):
+    target_sum = sum(matrix[0])
+    if any(sum(row) != target_sum for row in matrix):
+        return False
+    if any(sum(col) != target_sum for col in zip(*matrix)):
+        return False
+    if sum(matrix[i][i] for i in range(len(matrix))) != target_sum:
+        return False
+    if sum(matrix[i][len(matrix) - 1 - i] for i in range(len(matrix))) != target_sum:
+        return False
+    return True
+
+if __name__ == "__main__":
+    main()

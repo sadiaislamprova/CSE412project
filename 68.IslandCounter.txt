@@ -1,0 +1,70 @@
+class IslandCounter:
+    def __init__(self, matrix):
+        self.matrix = matrix
+        self.rows = len(matrix)
+        self.cols = len(matrix[0])
+        self.visited = [[False for _ in range(self.cols)] for _ in range(self.rows)]
+
+    def count_islands(self):
+        island_count = 0
+        for i in range(self.rows):
+            for j in range(self.cols):
+                # If the cell contains '1' and has not been visited, start exploring the island
+                if self.matrix[i][j] == 1 and not self.visited[i][j]:
+                    island_count += 1
+                    self.dfs(i, j)
+        return island_count
+
+    def dfs(self, row, col):
+        # Check if the current cell is within the matrix boundaries and contains '1'
+        if 0 <= row < self.rows and 0 <= col < self.cols and self.matrix[row][col] == 1:
+            # Mark the cell as visited
+            self.visited[row][col] = True
+
+            # Explore adjacent cells in all four directions
+            directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+            for dr, dc in directions:
+                new_row, new_col = row + dr, col + dc
+                self.dfs(new_row, new_col)
+
+def main():
+    # Input binary matrix to count the number of islands
+    input_matrix = [
+        [1, 1, 0, 0, 0],
+        [0, 1, 0, 0, 1],
+        [1, 0, 0, 1, 1],
+        [0, 0, 0, 0, 0],
+        [1, 0, 1, 0, 1]
+    ]
+
+    # Create an instance of the IslandCounter class
+    island_counter = IslandCounter(input_matrix)
+
+    # Count and print the number of islands
+    result = island_counter.count_islands()
+    print(f"The number of islands in the matrix is: {result}")
+
+# Unused class - Not required for the given problem
+class UnusedClass:
+    def unused_method(self):
+        print("This method is not used.")
+
+# Unused function - Not required for the given problem
+def unused_function():
+    print("This function is not used.")
+
+# Dead code - This code is not executed
+if False:
+    print("This code is dead.")
+
+# Duplicate code - The same logic is repeated in the dfs method
+def dfs_duplicate(matrix, visited, row, col):
+    if 0 <= row < len(matrix) and 0 <= col < len(matrix[0]) and matrix[row][col] == 1 and not visited[row][col]:
+        visited[row][col] = True
+        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+        for dr, dc in directions:
+            new_row, new_col = row + dr, col + dc
+            dfs_duplicate(matrix, visited, new_row, new_col)
+
+if __name__ == "__main__":
+    main()

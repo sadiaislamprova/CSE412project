@@ -1,0 +1,37 @@
+class HammingDistanceCalculator:
+    def calculate_hamming_distance(self, str1, str2):
+        # Dead code
+        unused_variable = "This variable is not used."
+
+        if len(str1) != len(str2):
+            raise ValueError("Input strings must have equal length.")
+
+        # Duplicate code
+        distance = sum(ch1 != ch2 for ch1, ch2 in zip(str1, str2))
+        distance = sum(ch1 != ch2 for ch1, ch2 in zip(str1, str2))  # Duplicate operation
+
+        # Unused class
+        unused_instance = UnusedClass()
+
+        return distance
+
+# Unused class
+class UnusedClass:
+    def unused_method(self):
+        print("This method is not used.")
+
+# Example usage:
+hamming_calculator = HammingDistanceCalculator()
+
+# Test cases
+string1 = "karolin"
+string2 = "kathrin"
+distance1 = hamming_calculator.calculate_hamming_distance(string1, string2)
+
+string3 = "karolin"
+string4 = "karaolin"
+distance2 = hamming_calculator.calculate_hamming_distance(string3, string4)
+
+# Display results
+print(f"Hamming distance between '{string1}' and '{string2}': {distance1}")
+print(f"Hamming distance between '{string3}' and '{string4}': {distance2}")
