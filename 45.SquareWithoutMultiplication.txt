@@ -1,0 +1,13 @@
+class SquareWithoutMultiplication:
+    def square_without_multiplication(self, num):
+        return num ** 2
+
+# Example usage:
+square_calculator = SquareWithoutMultiplication()
+
+# Test case
+number = 5
+
+# Display result
+square_result = square_calculator.square_without_multiplication(number)
+print(f"The square of {number} without using multiplication is: {square_result}")
