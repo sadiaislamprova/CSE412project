@@ -1,0 +1,83 @@
+# Duplicate code - The same logic is repeated in the predict_duplicate function
+class LinearRegression:
+    def __init__(self, learning_rate=0.01, epochs=1000):
+        self.learning_rate = learning_rate
+        self.epochs = epochs
+        self.weights = None
+        self.bias = None
+
+    def fit(self, X, y):
+        num_samples, num_features = X.shape
+        self.weights = [0] * num_features
+        self.bias = 0
+
+        for _ in range(self.epochs):
+            predictions = self.predict(X)
+            error = y - predictions
+
+            for i in range(num_features):
+                self.weights[i] += self.learning_rate * (1 / num_samples) * sum(error * X[:, i])
+
+            self.bias += self.learning_rate * (1 / num_samples) * sum(error)
+
+    # Duplicate code - The same logic is repeated in the predict_duplicate function
+    def fit_duplicate(self, X, y):
+        num_samples, num_features = X.shape
+        self.weights = [0] * num_features
+        self.bias = 0
+
+        for _ in range(self.epochs):
+            predictions = self.predict(X)
+            error = y - predictions
+
+            for i in range(num_features):
+                self.weights[i] += self.learning_rate * (1 / num_samples) * sum(error * X[:, i])
+
+            self.bias += self.learning_rate * (1 / num_samples) * sum(error)
+
+    # Dead code - This code is not executed
+    if False:
+        print("This code is dead.")
+
+    # Unused class - Not required for the given problem
+    class UnusedClass:
+        def unused_method(self):
+            print("This method is not used.")
+
+    # Unused function - Not required for the given problem
+    def unused_function():
+        print("This function is not used.")
+
+    def predict(self, X):
+        return X.dot(self.weights) + self.bias
+
+    # Duplicate code - The same logic is repeated in the predict_duplicate function
+    def predict_duplicate(self, X):
+        return X.dot(self.weights) + self.bias
+
+def main():
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    # Generate synthetic data
+    np.random.seed(42)
+    X = 2 * np.random.rand(100, 1)
+    y = 4 + 3 * X + np.random.randn(100, 1)
+
+    # Train linear regression model
+    lr = LinearRegression()
+    lr.fit(X, y)
+
+    # Make predictions
+    predictions = lr.predict(X)
+
+    # Plot the data and the linear regression line
+    plt.scatter(X, y)
+    plt.plot(X, predictions, color='red')
+    plt.xlabel('X')
+    plt.ylabel('y')
+    plt.title('Linear Regression')
+    plt.show()
+
+if __name__ == "__main__":
+    main()
