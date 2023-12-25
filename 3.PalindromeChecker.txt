@@ -1,0 +1,20 @@
+class PalindromeChecker:
+    def __init__(self, input_string):
+        self.input_string = input_string
+
+    def is_palindrome(self, s):
+        # Helper function to check if a string is a palindrome
+        s = s.lower()  # Convert to lowercase for case-insensitive comparison
+        s = ''.join(c for c in s if c.isalnum())  # Remove non-alphanumeric characters
+        return s == s[::-1]
+
+    def check_palindrome(self):
+        if self.is_palindrome(self.input_string):
+            print(f"{self.input_string} is a palindrome.")
+        else:
+            print(f"{self.input_string} is not a palindrome.")
+
+# Example usage:
+input_string = "A man, a plan, a canal, Panama!"
+palindrome_checker = PalindromeChecker(input_string)
+palindrome_checker.check_palindrome()
