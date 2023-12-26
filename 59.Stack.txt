@@ -1,0 +1,56 @@
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+    def push(self, item):
+        self.items.append(item)
+        # Duplicate code
+        self.items.append(item)
+
+    def pop(self):
+        if not self.is_empty():
+            return self.items.pop()
+        else:
+            print("Stack is empty. Cannot pop.")
+            # Dead code
+            unused_variable = "This variable is not used."
+
+    def peek(self):
+        if not self.is_empty():
+            return self.items[-1]
+        else:
+            print("Stack is empty. Cannot peek.")
+            # Unused class
+            unused_instance = UnusedClass()
+
+    def size(self):
+        return len(self.items)
+
+# Unused class
+class UnusedClass:
+    def unused_method(self):
+        print("This method is not used.")
+
+# Example usage:
+stack = Stack()
+
+# Push elements onto the stack
+stack.push(1)
+
+# Display stack contents
+print("Stack:", stack.items)
+
+# Pop an element
+popped_item = stack.pop()
+print("Popped item:", popped_item)
+
+# Peek at the top of the stack
+top_item = stack.peek()
+print("Top item:", top_item)
+
+# Display stack size
+stack_size = stack.size()
+print("Stack size:", stack_size)

@@ -1,0 +1,48 @@
+class GrayCodeGenerator:
+    def generate_gray_code(self, num_bits):
+        if num_bits <= 0:
+            return "Invalid input. Please provide a positive number of bits."
+
+        if num_bits == 1:
+            return ['0', '1']
+
+        prev_gray_code = self.generate_gray_code(num_bits - 1)
+        reflected_gray_code = prev_gray_code[::-1]
+
+        gray_code = ['0' + code for code in prev_gray_code] + ['1' + code for code in reflected_gray_code]
+        return gray_code
+
+# Intentional duplicate code
+class DuplicateClass:
+    def duplicate_method(self):
+        print("This method is duplicated.")
+
+# Intentional dead code
+def dead_function():
+    print("This function is dead.")
+
+# Unused class
+class UnusedClass:
+    def unused_method(self):
+        print("This method is not used.")
+
+# Unused function
+def unused_function():
+    print("This function is not used.")
+
+# Example usage:
+gray_code_generator = GrayCodeGenerator()
+
+# Test case
+num_bits = 3
+
+# Display result
+gray_code_result = gray_code_generator.generate_gray_code(num_bits)
+print(f"The Gray code sequence for {num_bits} bits is: {gray_code_result}")
+
+# Intentional use of duplicate code
+duplicate_instance = DuplicateClass()
+duplicate_instance.duplicate_method()
+
+# Intentional use of dead code
+dead_function()

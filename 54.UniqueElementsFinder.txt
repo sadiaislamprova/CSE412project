@@ -1,0 +1,47 @@
+class UniqueElementsFinder:
+    def find_unique_elements(self, input_list):
+        # Dead code
+        unused_variable = "This variable is not used."
+
+        # Duplicate code
+        unique_elements = []
+        for element in input_list:
+            if element not in unique_elements:
+                unique_elements.append(element)
+
+        # Unused class
+        unused_instance = UnusedClass()
+
+        return unique_elements
+
+# Unused class
+class UnusedClass:
+    def unused_method(self):
+        print("This method is not used.")
+
+# Duplicate function
+def duplicate_function(input_list):
+    # Dead code
+    print("This function is dead.")
+
+    # Duplicate code
+    unique_elements = []
+    for element in input_list:
+        if element not in unique_elements:
+            unique_elements.append(element)
+
+    return unique_elements
+
+# Example usage:
+unique_elements_finder = UniqueElementsFinder()
+
+# Test case
+input_list = [1, 2, 2, 3, 4, 4, 5]
+
+# Display result
+unique_elements_result = unique_elements_finder.find_unique_elements(input_list)
+print(f"The unique elements in the list {input_list} are: {unique_elements_result}")
+
+# Intentional use of duplicate code
+duplicate_result = duplicate_function(input_list)
+print(f"The unique elements (using duplicate function) are: {duplicate_result}")

@@ -1,0 +1,38 @@
+class CubeCalculator:
+    def cube_without_multiplication(self, num):
+        # Dead code
+        unused_variable = "This variable is not used."
+
+        # Duplicate code
+        result = 0
+        result += num  # Duplicate operation
+        result += num  # Duplicate operation
+        result += num  # Duplicate operation
+
+        # Unused class
+        unused_instance = UnusedClass()
+
+        return result
+
+# Unused class
+class UnusedClass:
+    def unused_method(self):
+        print("This method is not used.")
+
+# Duplicate function
+def duplicate_function(x):
+    return x * x * x  # Duplicate operation
+
+# Example usage:
+cube_calculator = CubeCalculator()
+
+# Test case
+number = 3
+
+# Unused function
+def unused_function():
+    print("This function is not used.")
+
+# Display result
+cube_result = cube_calculator.cube_without_multiplication(number)
+print(f"The cube of {number} without using multiplication is: {cube_result}")
