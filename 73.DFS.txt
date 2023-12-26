@@ -1,0 +1,73 @@
+class Graph:
+    def __init__(self):
+        self.graph = {}
+
+    def add_edge(self, vertex, neighbors):
+        self.graph[vertex] = neighbors
+
+# Unused class - Not required for the given problem
+class UnusedClass:
+    def unused_method(self):
+        print("This method is not used.")
+
+# Unused function - Not required for the given problem
+def unused_function():
+    print("This function is not used.")
+
+# Dead code - This code is not executed
+if False:
+    print("This code is dead.")
+
+def dfs(graph, start):
+    visited = set()
+    result = []
+
+    def dfs_recursive(current_vertex):
+        nonlocal visited, result
+        visited.add(current_vertex)
+        result.append(current_vertex)
+
+        for neighbor in graph.graph[current_vertex]:
+            if neighbor not in visited:
+                dfs_recursive(neighbor)
+
+    dfs_recursive(start)
+    return result
+
+# Duplicate code - The same logic is repeated in the dfs_recursive function
+def dfs_duplicate(graph, start):
+    visited = set()
+    result = []
+
+    def dfs_recursive(current_vertex):
+        nonlocal visited, result
+        visited.add(current_vertex)
+        result.append(current_vertex)
+
+        for neighbor in graph.graph[current_vertex]:
+            if neighbor not in visited:
+                dfs_recursive(neighbor)
+
+    dfs_recursive(start)
+    return result
+
+def main():
+    graph = Graph()
+
+    # Adding edges to the graph
+    graph.add_edge('A', ['B', 'C'])
+    graph.add_edge('B', ['A', 'D', 'E'])
+    graph.add_edge('C', ['A', 'F', 'G'])
+    graph.add_edge('D', ['B'])
+    graph.add_edge('E', ['B', 'H'])
+    graph.add_edge('F', ['C'])
+    graph.add_edge('G', ['C'])
+    graph.add_edge('H', ['E'])
+
+    start_vertex = 'A'
+    result = dfs(graph, start_vertex)
+
+    print(f"DFS starting from vertex {start_vertex}: {result}")
+
+if __name__ == "__main__":
+    main()

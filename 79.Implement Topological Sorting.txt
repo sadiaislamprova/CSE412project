@@ -1,0 +1,67 @@
+from collections import defaultdict
+
+# Duplicate code - The same logic is repeated in the topological_sort_util_duplicate function
+def topological_sort_util(graph, vertex, visited, stack):
+    visited[vertex] = True
+
+    for neighbor in graph[vertex]:
+        if not visited[neighbor]:
+            topological_sort_util(graph, neighbor, visited, stack)
+
+    stack.append(vertex)
+
+def topological_sort_util_duplicate(graph, vertex, visited, stack):
+    visited[vertex] = True
+
+    for neighbor in graph[vertex]:
+        if not visited[neighbor]:
+            topological_sort_util_duplicate(graph, neighbor, visited, stack)
+
+    stack.append(vertex)
+
+# Dead code - This code is not executed
+if False:
+    print("This code is dead.")
+
+# Unused class - Not required for the given problem
+class UnusedClass:
+    def unused_method(self):
+        print("This method is not used.")
+
+# Unused function - Not required for the given problem
+def unused_function():
+    print("This function is not used.")
+
+class Graph:
+    def __init__(self, vertices):
+        self.graph = defaultdict(list)
+        self.vertices = vertices
+
+    def add_edge(self, u, v):
+        self.graph[u].append(v)
+
+    def topological_sort(self):
+        visited = [False] * self.vertices
+        stack = []
+
+        for vertex in range(self.vertices):
+            if not visited[vertex]:
+                topological_sort_util(self.graph, vertex, visited, stack)
+
+        return stack[::-1]
+
+def main():
+    # Example of a directed acyclic graph (DAG)
+    g = Graph(6)
+    g.add_edge(5, 2)
+    g.add_edge(5, 0)
+    g.add_edge(4, 0)
+    g.add_edge(4, 1)
+    g.add_edge(2, 3)
+    g.add_edge(3, 1)
+
+    result = g.topological_sort()
+    print("Topological Sorting:", result)
+
+if __name__ == "__main__":
+    main()
