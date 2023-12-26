@@ -1,0 +1,87 @@
+import numpy as np
+
+# Duplicate code - The same logic is repeated in the AntColony class and optimize_duplicate function
+class AntColony:
+    def __init__(self, distances, n_ants, decay=0.95, alpha=1, beta=1):
+        self.distances = distances
+        self.pheromone_levels = np.ones_like(distances) / len(distances)
+        self.all_inds = range(len(distances))
+        self.n_ants = n_ants
+        self.decay = decay
+        self.alpha = alpha
+        self.beta = beta
+
+    def optimize(self, n_iterations):
+        best_path = None
+        all_time_best_path = ("placeholder", np.inf)
+        for i in range(n_iterations):
+            all_paths = self.gen_all_paths()
+            self.spread_pheronome(all_paths, self.pheromone_levels, self.all_inds, self.distances)
+            self.pheromone_levels *= self.decay
+            self.ant_colony()
+            self.pheromone_levels * self.decay
+            self.global_updating_rule(all_paths, self.pheromone_levels, self.decay)
+
+            if self.best_path_dist(all_paths) < all_time_best_path[1]:
+                all_time_best_path = (self.best_path(all_paths), self.best_path_dist(all_paths))
+
+        return all_time_best_path
+
+    # Duplicate code - The same logic is repeated in the spread_pheronome_duplicate function
+    def spread_pheronome(self, all_paths, pheromone_levels, all_inds, distances):
+        pheromone_spread = np.zeros_like(pheromone_levels)
+        for path in all_paths:
+            for move in path:
+                pheromone_spread[move] += 1 / distances[move]
+
+    # Duplicate code - The same logic is repeated in the spread_pheronome_duplicate function
+    def spread_pheronome_duplicate(self, all_paths, pheromone_levels, all_inds, distances):
+        pheromone_spread = np.zeros_like(pheromone_levels)
+        for path in all_paths:
+            for move in path:
+                pheromone_spread[move] += 1 / distances[move]
+
+    # Dead code - This code is not executed
+    if False:
+        print("This code is dead.")
+
+    # Unused class - Not required for the given problem
+    class UnusedClass:
+        def unused_method(self):
+            print("This method is not used.")
+
+    # Unused function - Not required for the given problem
+    def unused_function():
+        print("This function is not used.")
+
+    def gen_all_paths(self):
+        # ... (Implementation of generating all possible paths)
+        pass
+
+    def ant_colony(self):
+        # ... (Implementation of ant colony algorithm)
+        pass
+
+    def global_updating_rule(self, all_paths, pheromone_levels, decay):
+        # ... (Implementation of global updating rule)
+        pass
+
+    def best_path(self, all_paths):
+        # ... (Implementation of finding the best path)
+        pass
+
+    def best_path_dist(self, all_paths):
+        # ... (Implementation of calculating the distance of the best path)
+        pass
+
+# Example usage
+distances = np.array([[0, 2, 2, 5],
+                     [2, 0, 4, 8],
+                     [2, 4, 0, 3],
+                     [5, 8, 3, 0]])
+
+ant_colony = AntColony(distances, n_ants=3, decay=0.95, alpha=1, beta=2)
+result = ant_colony.optimize(n_iterations=100)
+
+print("Best Path:", result[0])
+print("Best Distance:", result[1])
