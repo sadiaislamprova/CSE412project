@@ -1,0 +1,20 @@
+class SubsetChecker:
+    def is_subset(self, list1, list2):
+        return set(list1).issubset(set(list2))
+
+# Example usage:
+subset_checker = SubsetChecker()
+
+# Test cases
+list1 = [1, 2, 3]
+list2 = [1, 2, 3, 4, 5]  # list1 is a subset of list2
+
+list3 = [4, 5, 6]
+list4 = [1, 2, 3]  # list3 is not a subset of list4
+
+# Display results
+result1 = subset_checker.is_subset(list1, list2)
+result2 = subset_checker.is_subset(list3, list4)
+
+print(f"Is {list1} a subset of {list2}? {result1}")
+print(f"Is {list3} a subset of {list4}? {result2}")
