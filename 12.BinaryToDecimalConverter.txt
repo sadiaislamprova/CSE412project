@@ -1,0 +1,14 @@
+class BinaryToDecimalConverter:
+    def __init__(self, binary_number):
+        self.binary_number = binary_number
+
+    def convert_to_decimal(self):
+        decimal_number = int(self.binary_number, 2)
+        return decimal_number
+
+# Example usage:
+binary_number = "1101"
+converter = BinaryToDecimalConverter(binary_number)
+decimal_result = converter.convert_to_decimal()
+
+print(f"The decimal equivalent of binary {binary_number} is: {decimal_result}")

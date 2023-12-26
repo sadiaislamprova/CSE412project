@@ -1,0 +1,16 @@
+class DuplicateRemover:
+    def __init__(self, input_list):
+        self.input_list = input_list
+
+    def remove_duplicates(self):
+        unique_list = list(set(self.input_list))
+        return unique_list
+
+# Example usage:
+input_list = [1, 2, 2, 3, 4, 4, 5]
+duplicate_remover = DuplicateRemover(input_list)
+result_unique_list = duplicate_remover.remove_duplicates()
+
+print(f"Original List: {input_list}")
+print(f"List after removing duplicates: {result_unique_list}")
+.
